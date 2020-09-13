@@ -38,8 +38,7 @@
                 <thead>
                     <tr>
                         <th>SN</th>
-                        <th>Contact Person</th>
-                        <th>Head Office</th>
+                        <th>Office Address</th>
                     </tr>
                 </thead>   
                 <tbody>
@@ -48,7 +47,6 @@
                         foreach($getContact as $val){ ?>
                     <tr>
                         <td><?php echo $i++;?></td>
-                        <td class="center"><?php echo $val->contact_person;?></td>
                         <td class="center"><?php echo $val->head_office;?></td>
                         <td class="center">
                             <a class="btn btn-info" href="<?php echo base_url();?>Common/edit_contact/<?php echo $val->contact_id?>" title="Edit">

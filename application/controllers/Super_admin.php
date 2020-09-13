@@ -12,14 +12,15 @@ class Super_admin extends Base_Controller {
 		$this->load->model('Superadmin_model');
 		$this->load->model('User_model');
 		$this->load->model('Review_model');
+		$this->load->model('Photo_model');
 		$this->load->helper('admin_helper');
 	}
 	
 	public function index(){
 		$data=array();
 		$data['total_admin'] = $this->Superadmin_model->get_admin();
-		$data['total_review'] = $this->Review_model->get_review();
-		//$data['total_user'] = $this->User_model->get_users();
+		$data['total_product'] = $this->Review_model->get_review();
+		$data['total_photo'] = $this->Photo_model->get_photo();
 		$data['admin_maincontent']=$this->load->view('admin/dashbord',$data,true);
 		$this->load->view('admin/admin_master',$data);
 	}
@@ -261,7 +262,7 @@ class Super_admin extends Base_Controller {
 		$sdata = array();
 		$sdata['message'] = 'You are successfully Logout...!!!';
 		$this->session->set_userdata($sdata);
-		redirect('Welcome/index');
+		redirect('Admin');
 	}
 
 

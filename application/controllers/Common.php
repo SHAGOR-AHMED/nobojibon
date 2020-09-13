@@ -98,96 +98,6 @@ class Common extends Base_Controller {
 
 	}
 
-//======================= Useful Link ========================//
-
-	public function add_link(){
-		$data=array();
-		$data['admin_maincontent']=$this->load->view('admin/add_link','',true);
-		$this->load->view('admin/admin_master',$data);
-	}
-
-	public function manageLink(){
-		$data=array();
-		$data['message'] = array();
-		$data['message'] = $this->session->flashdata('message');
-        $data['allLinks'] = $this->Common_model->get_links();
-        $data['admin_maincontent'] = $this->load->view('admin/manage_link',$data,true);
-	 	$this->load->view('admin/admin_master',$data);
-	}
-	
-	public function save_link(){
-
-		$this->form_validation->set_rules('link_title', 'Link Title', 'required');
-		$this->form_validation->set_rules('url', 'Link Url', 'required');
-
-		if($this->form_validation->run() == FALSE){
-
-			$data['admin_maincontent'] = $this->load->view('admin/add_link', '', true);
-			$this->load->view('admin/admin_master',$data);
-			return false;
-
-		}else{
-
-			$data['link_title'] = $this->input->post('link_title');
-			$data['url'] = $this->input->post('url');
-
-			$result = $this->Common_model->commonInsert('tbl_link',$data);
-			if($result){
-				$msg = 'Useful Link has been created successfully !!!';
-				$message = $this->msg($msg);
-				redirect('Common/manageLink');
-			}else{
-				$msg ='Failed to Create !!!';
-				$message = $this->msg($msg);
-				redirect('Common/manageLink');
-			}
-			
-		}//if
-
-	}//save_link
-
-	public function edit_link($id){
-
-		$data=array();
-		$data['link_info']=$this->Common_model->select_link_info_by_id($id);
-		$data['admin_maincontent']=$this->load->view('admin/edit_link',$data,true);
-		$this->load->view('admin/admin_master',$data);
-	}
-
-	public function update_link(){
-		
-		$data=array();
-		$link_id = $this->input->post('link_id',true);
-		$data['link_title']=$this->input->post('link_title',true);
-		$data['url']=$this->input->post('url',true);
-
-		$result = $this->Common_model->update_link_info($data,$link_id);
-		if($result){
-			$msg = 'Link has been Updated successfully !!!';
-			$message = $this->msg($msg);
-			redirect('Common/manageLink');
-		}else{
-			$msg ='Failed to Update !!!';
-			$message = $this->msg($msg);
-			redirect('Common/manageLink');
-		}
-
-	}
-
-	public function delete_link($id){
-
-        $result = $this->Common_model->deleteLink($id);
-		if($result){
-			$msg = 'Link has been Deleted successfully !!!';
-			$message = $this->msg($msg);
-			redirect('Common/manageLink');
-		}else{
-			$msg ='Failed to Delete !!!';
-			$message = $this->msg($msg);
-			redirect('Common/manageLink');
-		}
-	}
-
 //======================= Contact Info ========================//
 
 
@@ -249,7 +159,6 @@ class Common extends Base_Controller {
 		
 		$data=array();
 		$contact_id = $this->input->post('contact_id',true);
-		$data['contact_person']=$this->input->post('contact_person',true);
 		$data['head_office']=$this->input->post('head_office',true);
 
 		$result = $this->Common_model->update_contact_info($data,$contact_id);

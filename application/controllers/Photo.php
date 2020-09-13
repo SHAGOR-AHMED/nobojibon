@@ -12,17 +12,6 @@ class Photo extends Base_Controller {
 		$this->load->model('Photo_model');
 		$this->load->helper('admin_helper');
 	}
-	
-	// public function index(){
-	// 	$data['message'] = array();
-	// 	$data['message'] = $this->session->flashdata('message');
-	// 	$total = $this->db->count_all("tbl_review");
- //        $perPage = 20;
- //        $this->pagination(base_url() . 'Review/index', $perPage, $total);
- //        $data['all_review']=$this->Photo_model->select_all_review($perPage, $this->uri->segment(3));
- //        $data['admin_maincontent']=$this->load->view('admin/review_manage',$data,true);
-	//  	$this->load->view('admin/admin_master',$data);
-	// }
 
 	public function index(){
 		$data['message'] = array();
@@ -41,37 +30,20 @@ class Photo extends Base_Controller {
 
 	public function save_photo(){
 
-		$this->form_validation->set_rules('type', 'Photo Type', 'required');
-		$this->form_validation->set_rules('photo_title', 'Photo Title', 'required');
+		$data['type'] = $this->input->post('type');
+		$data['photo'] = $this->uploadPhoto();
+		//$this->debug($data);
 
-		if($this->form_validation->run() == FALSE){
-
-			$data['admin_maincontent'] = $this->load->view('admin/add_photo', '', true);
-			$this->load->view('admin/admin_master',$data);
-			return false;
-
+		$result = $this->Photo_model->commonInsert('tbl_photos',$data);
+		if($result){
+			$msg = 'Photo has been saved successfully !!!';
+			$message = $this->msg($msg);
+			redirect('Photo/index');
 		}else{
-
-			$data['type'] = $this->input->post('type');
-			$data['photo_title'] = $this->input->post('photo_title');
-			$data['description'] = $this->input->post('description');
-
-			$data['photo'] = $this->uploadPhoto();
-
-			//$this->debug($data);
-
-			$result = $this->Photo_model->commonInsert('tbl_photos',$data);
-			if($result){
-				$msg = 'Photo has been saved successfully !!!';
-				$message = $this->msg($msg);
-				redirect('Photo/index');
-			}else{
-				$msg ='Failed to Added !!!';
-				$message = $this->msg($msg);
-				redirect('Photo/index');
-			}
-			
-		}//if
+			$msg ='Failed to Added !!!';
+			$message = $this->msg($msg);
+			redirect('Photo/index');
+		}
 
 	}//save_photo
 
@@ -87,12 +59,8 @@ class Photo extends Base_Controller {
 
 		$photo_id = $this->input->post('photo_id',true);
 		$type = $this->input->post('type',true);
-		$photo_title = $this->input->post('photo_title',true);
-		$description = $this->input->post('description',true);
-
+		
 		$this->db->set('type', $type);
-		$this->db->set('photo_title', $photo_title);
-		$this->db->set('description', $description);
 
 		if(isset($photo_id) && $photo_id != ''){
 
@@ -123,6 +91,7 @@ class Photo extends Base_Controller {
 		}
 
 	}//update_photo
+	
 
 	public function delete_photo($id){
 

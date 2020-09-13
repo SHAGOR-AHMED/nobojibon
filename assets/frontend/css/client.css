@@ -1,0 +1,57 @@
+
+.client-area .nbs-flexisel-container {
+    max-width:100%;
+}
+.client-area .nbs-flexisel-ul {
+    position:relative;
+    width:9999px;
+    margin:0px;
+    padding:0px;
+    list-style-type:none;
+    text-align:center;
+}
+.client-area .nbs-flexisel-inner {
+    overflow:hidden;
+    width:100%;
+}
+.client-area .nbs-flexisel-item {
+    float:left;
+    margin:0px ;
+    padding:0px;
+    position:relative;
+    line-height:0px;
+}
+
+.client-area .nbs-flexisel-item img {
+	cursor: pointer;
+	position: relative;
+	margin: 0;
+	height: 98px;
+	width: 100%;
+}
+.client-area .nbs-flexisel-nav-left, 
+.client-area .nbs-flexisel-nav-right {
+	width: 38px;
+	height: 36px;
+	position: absolute;
+	cursor: pointer;
+	z-index: 100;
+}
+.client-area .nbs-flexisel-nav-left:hover {
+    cursor: pointer;
+    opacity:.5;
+}
+.client-area .nbs-flexisel-nav-right {
+	background:url("../images/element/right.png") no-repeat scroll 0 0;
+	right: 1%;
+	top: 30% !important;
+}
+.client-area .nbs-flexisel-nav-left {
+	left: 1%;
+	top: 30% !important;
+	background:url("../images/element/left.png") no-repeat scroll 0 0;
+}
+.client-area .nbs-flexisel-nav-right:hover {
+    cursor: pointer;
+    opacity:.5;
+}

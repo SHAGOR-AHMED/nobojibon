@@ -1,18 +1,17 @@
-﻿<div class="banner-area">
-    <img alt="" src="images/banner/in-1.png">
+<section class="bb">
     <h1>About Us</h1>
-</div>
+</section>
 
-<section class="inner-area">
+<section class="inner-page-area">
     <div class="container">
-       <div class="inner-box">
-            <h6>
-                <?php foreach($aboutUs as $value){ 
-
-                    echo $value->description;
-
-                } ?>
-            </h6>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="inner-page-txt">
+                <?php
+                    foreach ($aboutUs as $value) {
+                        echo $value->description;
+                    }
+                ?>
+            </div>
         </div>
     </div>
 </section>

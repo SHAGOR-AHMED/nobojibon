@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>NOBO JIBON | Management System</title>
+	<title>Mundane Chem | Management System</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
 	<meta name="author" content="Muhammad Usman">
@@ -48,7 +48,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.html"> <img alt="Charisma Logo" src="<?= base_url('images/logo.png');?>" /> <span>N-J</span></a>
+				<a class="brand" href="index.html"> <img alt="Charisma Logo" src="<?= base_url('images/logo.png');?>" /> <span>M-C</span></a>
 				
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
@@ -70,7 +70,7 @@
 				
 				<div class="top-nav nav-collapse">
 					<ul class="nav">
-						<li><a href="#">Nobo Jibon Control Panel</a></li>
+						<li><a href="#">Mundane Chem Website Control Panel</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
@@ -78,8 +78,7 @@
 	</div>
 	<!-- topbar ends -->
 		<div class="container-fluid">
-		<div class="row-fluid">
-				
+			<div class="row-fluid">
 			<!-- left menu starts -->
 			<div class="span2 main-menu-span">
 				<div class="well nav-collapse sidebar-nav">
@@ -91,25 +90,14 @@
 
 						<li><a class="ajax-link" href="<?php echo base_url('Photo/');?>"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Media</span></a></li>
 
-						<li><a class="ajax-link" href="<?php echo base_url('Gallery/');?>"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Gallery Album</span></a></li>
-
-						<li><a class="ajax-link" href="<?php echo base_url('Gallery/manageGalleryImages');?>"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Gallery Images</span></a></li>
-
-						<li><a class="ajax-link" href="<?php echo base_url('News/');?>"><i class="icon-edit"></i><span class="hidden-tablet"> Manage News & Event</span></a></li>
-
-						<!-- <li><a class="ajax-link" href="<?php echo base_url('Common/add_about');?>"><i class="icon-list-alt"></i><span class="hidden-tablet"> Add About</span></a></li> -->
 						<li><a class="ajax-link" href="<?php echo base_url('Common/');?>"><i class="icon-edit"></i><span class="hidden-tablet"> Manage About</span></a></li>
 
-						<li><a class="ajax-link" href="<?php echo base_url('Review_type/'); ?>"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Program Name</span></a></li> 
+						<li><a class="ajax-link" href="<?php echo base_url('Review_type/'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Manage Product Category</span></a></li> 
 
-						<li><a class="ajax-link" href="<?php echo base_url('Review/');?>"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Program</span></a></li>
-
-						<li><a class="ajax-link" href="<?php echo base_url('Partner/');?>"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Partner</span></a></li>
-
-
-						<li><a class="ajax-link" href="<?php echo base_url('Common/manageLink');?>"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Useful Link</span></a></li>
+						<li><a class="ajax-link" href="<?php echo base_url('Review/');?>"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Product</span></a></li>
 
 						<li><a class="ajax-link" href="<?php echo base_url('Common/manageContact');?>"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Contact Info</span></a></li>
+
 						<li><a class="ajax-link" href="<?php echo base_url('Common/manageFcontact');?>"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Footer Contact Info</span></a></li>
 
 						<!--  <li><a class="ajax-link" href="<?php echo base_url('Super_admin/manageUser');?>"><i class="icon-eye-open"></i><span class="hidden-tablet"> Manage User</span></a></li> -->

@@ -16,15 +16,15 @@ class Review_type extends Base_Controller {
 	public function index(){
 		$data['message'] = array();
 		$data['message'] = $this->session->flashdata('message');
-        $data['all_program']=$this->Reviewtype_model->select_all_type();
-        $data['admin_maincontent']=$this->load->view('admin/manage_program',$data,true);
+        $data['all_category']=$this->Reviewtype_model->select_all_type();
+        $data['admin_maincontent']=$this->load->view('admin/manage_category',$data,true);
 	 	$this->load->view('admin/admin_master',$data);
 	}
 
-	public function add_program(){
+	public function add_category(){
 
 		$data=array();
-		$data['admin_maincontent']=$this->load->view('admin/add_program','',true);
+		$data['admin_maincontent']=$this->load->view('admin/add_category','',true);
 		$this->load->view('admin/admin_master',$data);
 	}
 	
@@ -44,7 +44,7 @@ class Review_type extends Base_Controller {
 
 			$result = $this->Reviewtype_model->commonInsert('tbl_type',$data);
 			if($result){
-				$msg = 'Program has been created successfully !!!';
+				$msg = 'Category has been created successfully !!!';
 				$message = $this->msg($msg);
 				redirect('Review_type/index');
 			}else{
@@ -57,25 +57,11 @@ class Review_type extends Base_Controller {
 
 	}//save_type
 
-	public function delete_type($id){
-
-        $result = $this->Reviewtype_model->deleteType($id);
-		if($result){
-			$msg = 'Program has been Deleted successfully !!!';
-			$message = $this->msg($msg);
-			redirect('Review_type/index');
-		}else{
-			$msg ='Failed to Delete !!!';
-			$message = $this->msg($msg);
-			redirect('Review_type/index');
-		}
-	}
-
-	public function edit_type($id){
+	public function edit_category($id){
 
 		$data=array();
-		$data['type_info']=$this->Reviewtype_model->select_type_info_by_id($id);
-		$data['admin_maincontent']=$this->load->view('admin/edit_program',$data,true);
+		$data['selected_info'] = $this->Reviewtype_model->select_type_info_by_id($id);
+		$data['admin_maincontent'] = $this->load->view('admin/edit_category',$data,true);
 		$this->load->view('admin/admin_master',$data);
 	}
 
@@ -87,7 +73,7 @@ class Review_type extends Base_Controller {
 
 		$result = $this->Reviewtype_model->update_reviewType_info($data,$type_id);
 		if($result){
-			$msg = 'Program has been Updated successfully !!!';
+			$msg = 'Category has been Updated !!!';
 			$message = $this->msg($msg);
 			redirect('Review_type/index');
 		}else{
@@ -95,7 +81,22 @@ class Review_type extends Base_Controller {
 			$message = $this->msg($msg);
 			redirect('Review_type/index');
 		}
+	}
 
+
+
+	public function delete_category($id){
+
+        $result = $this->Reviewtype_model->deleteType($id);
+		if($result){
+			$msg = 'Category has been Deleted !!!';
+			$message = $this->msg($msg);
+			redirect('Review_type/index');
+		}else{
+			$msg ='Failed to Delete !!!';
+			$message = $this->msg($msg);
+			redirect('Review_type/index');
+		}
 	}
 
 }//

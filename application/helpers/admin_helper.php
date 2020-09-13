@@ -61,25 +61,16 @@ function photoTypeName($val){
     
     switch ($val) {
         case 1:
-            echo "Banner";
+            echo "Slider";
             break;
         case 2:
-            echo "About Us";
+            echo "Our Principals";
             break;
         case 3:
-            echo "Gallery";
+            echo "Support Team";
             break;
         case 4:
-            echo "Achievement";
-            break;
-        case 5:
-            echo "Program";
-            break;
-        case 6:
-            echo "Donar";
-            break;
-        case 7:
-            echo "Publication";
+            echo "Certificates";
             break;
         default:
             echo "";

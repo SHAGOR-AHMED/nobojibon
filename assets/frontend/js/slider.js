@@ -529,7 +529,7 @@
             _options: {
                 target: "+=1",
                 interval: 3e3,
-                autostart: !0
+                autostart: 1
             },
             _timer: null,
             _init: function() {

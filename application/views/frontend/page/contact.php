@@ -1,181 +1,51 @@
 
-<div class="banner-area">
-    <img alt="" src="<?= base_url('assets/frontend/'); ?>images/banner/in-7.png">
+<section class="bb">
     <h1>Contact Us</h1>
-</div>
+</section>
 
-<section class="inner-area">
+<section class="contact-area-page">
     <div class="container">
-       <div class="inner-box">
-	        <div class="col-md-6 col-sm-6 col-xs-12">
-	            <div class="contact-text">
-	                <h2 class="contact_address">Address</h2>
-	                <h5>Contact Person:</h5>
-					<p>
-						<?= $contactus->contact_person; ?>
-					</p>
-					<h5>Head Office:</h5>
-					<p>
-						<?= $contactus->head_office; ?>
-					</p>
-	            </div>
-	        </div>
-	        <div class="col-md-6 col-sm-6 col-xs-12">
-	            <div class="contact-text">
-	                <h2>Contact With Us!</h2>
-	                <?php 
-					    if(!empty($message)){
-					?>
-					    <div class="alert alert-block alert-success">
-					        <button type="button" class="close" data-dismiss="alert">
-					            <i class="ace-icon fa fa-times"></i>
-					        </button>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="text-field">
+                    <h3><i class="fa fa-hand-o-right"></i> Office Adress:</h3>
+                    <div style="height:15px; width:100%; float:left"></div>
+                    <div class="map_box">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.555828800309!2d90.41813491550324!3d23.72755069556464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b85a9b075799%3A0x2d780bf4764f16c3!2sAmin%20Court%2C%20Motijheel%20Rd%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1599649681371!5m2!1sen!2sbd" width="100%" height="150" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                    <p>
+                        <?= $contactus->head_office; ?>
+                    </p>
+                </div>
+                <!-- End : conatact_box -->
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="text-field">
+                    <h3><i class="fa fa-comments-o" aria-hidden="true"></i> Get a free quote!</h3>
+                    <?php 
+                        if(!empty($message)){
+                    ?>
+                        <div class="alert alert-block alert-success">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <i class="ace-icon fa fa-times"></i>
+                            </button>
 
-					        <i class="ace-icon fa fa-check green"></i>
-					        <?php echo $message; ?>
-					    </div>
+                            <i class="ace-icon fa fa-check green"></i>
+                            <?php echo $message; ?>
+                        </div>
 
-					<?php } ?>
-	                <form method="post" action="<?= base_url('Welcome/sendContactMail');?>" class="form-horizontal" style="margin-top:20px;">
-	                    <div class="form-group">
-	                        <div class="col-sm-12">
-	                            <input class="form-control con" id="name" name="name" placeholder="Enter Name" type="text">
-	                        </div>
-	                    </div>
-
-	                    <div class="form-group">
-	                        <div class="col-sm-12">
-	                            <input class="form-control con" id="subject" name="subject" placeholder="Enter Subject" type="text">
-	                        </div>
-	                    </div>
-	                    <div class="form-group">
-	                        <div class="col-sm-12">
-	                            <input class="form-control con" id="email" name="email" placeholder="Enter Email" type="email">
-	                        </div>
-	                    </div>
-	                    <div class="form-group">
-	                        <div class="col-sm-12">
-	                            <textarea rows="3" cols="3" name="comments" class="form-control con" placeholder="Enter Comments"></textarea>
-	                        </div>
-	                    </div>
-	                    <div class="form-group">
-	                        <div class="col-sm-12">
-	                            <button type="submit" class="btn btn-submit">Submit</button>
-	                        </div>
-	                    </div>
-	                </form>
-	             </div>  
-	         </div>
-	         <div class="col-md-12 col-sm-12 col-xs-12">
-	         	<div class="contact-text box">
-	            <h2>Geographical Area!</h2>
-				<table style="border-color: #120d0d;" cellspacing="0" cellpadding="0" border="2">
-					<tbody>
-						<tr>
-							<td><p><b><strong>District</strong></b></p></td>
-							<td><p><b><strong>Upazila</strong></b></p></td>
-							<td><p><b><strong>No. of Union</strong></b></p></td>
-							<td><p><b><strong>No. of Village</strong></b></p></td>
-						</tr>
-						<tr>
-							<td rowspan="7"><p>Satkhira</p></td>
-							<td><p>Satkhira Sadar</p></td>
-							<td><p>14</p></td>
-							<td><p>121</p></td>
-						</tr>
-						<tr>
-							<td><p>Tala</p></td>
-							<td><p>05</p></td>
-							<td><p>42</p></td>
-						</tr>
-						<tr>
-							<td><p>Kaligonj</p></td>
-							<td><p>02</p></td>
-							<td><p>09</p></td>
-						</tr>
-						<tr>
-							<td><p>Assasuni</p></td>
-							<td><p>04</p></td>
-							<td><p>22</p></td>
-						</tr>
-						<tr>
-							<td><p>Debhata</p></td>
-							<td><p>02</p></td>
-							<td><p>11</p></td>
-						</tr>
-						<tr>
-							<td><p>Shaymnagor</p></td>
-							<td><p>03</p></td>
-							<td><p>13</p></td>
-						</tr>
-						<tr>
-							<td><p>Kolaroa</p></td>
-							<td><p>03</p></td>
-							<td><p>12</p></td>
-						</tr>
-						<tr>
-							<td rowspan="2"><p>Jessore</p></td>
-							<td><p>Monirampur</p></td>
-							<td><p>01</p></td>
-							<td><p>03</p></td>
-						</tr>
-						<tr>
-							<td><p>Keshobpur</p></td>
-							<td><p>01</p></td>
-							<td><p>03</p></td>
-						</tr>
-						<tr>
-							<td rowspan="2"><p>Khulna</p></td>
-							<td><p>Dumuria</p></td>
-							<td><p>02</p></td>
-							<td><p>06</p></td>
-						</tr>
-						<tr>
-							<td><p>Paikgasa</p></td>
-							<td><p>01</p></td>
-							<td><p>04</p></td>
-						</tr>
-						<tr>
-							<td rowspan="2"><p>Sylhet</p></td>
-							<td><p>Sylhet Sadar</p></td>
-							<td><p>04</p></td>
-							<td><p>13</p></td>
-						</tr>
-						<tr>
-							<td><p>Jaintapur</p></td>
-							<td><p>04</p></td>
-							<td><p>15</p></td>
-						</tr>
-						<tr>
-							<td><p>Naogoan</p></td>
-							<td><p>Mohadevpur</p></td>
-							<td><p>01</p></td>
-							<td><p>10</p></td>
-						</tr>
-						<tr>
-							<td rowspan="4"><p>Cox's Bazar</p></td>
-							<td><p>Cox's Bazar Sadar</p></td>
-							<td><p>02</p></td>
-							<td><p>08</p></td>
-						</tr>
-						<tr>
-							<td><p>Ramu</p></td>
-							<td><p>01</p></td>
-							<td><p>02</p></td>
-						</tr>
-						<tr>
-							<td><p>Ukhia</p></td>
-							<td><p>01</p></td>
-							<td><p>02</p></td>
-						</tr>
-						<tr>
-							<td><p>Inani</p></td>
-							<td><p>01</p></td>
-							<td><p>02</p></td>
-						</tr>
-					</tbody>
-				</table>
-	         </div>
+                    <?php } ?>
+                    <div style="height:15px; width:100%; float:left"></div>
+                    <form method="post" action="<?= base_url('Mundane/sendContactMail');?>" class="form-horizontal" style="margin-top:20px;">
+                        <input type="text" class="form-control" placeholder="Enter name" name="name">
+                        <input type="text" class="form-control" placeholder="Enter phone" name="phone">
+                        <input type="text" class="form-control" placeholder="Enter Subject" name="subject">
+                        <input type="email" class="form-control" placeholder="Enter e-mail" name="email">
+                        <textarea rows="3" cols="3" class="form-control" name="comments" placeholder="Type Message" spellcheck="false"></textarea><br>
+                        <input type="submit" name="submit" class="btn btn-primary" value="Send">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </section>

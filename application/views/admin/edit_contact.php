@@ -33,16 +33,6 @@
                 <fieldset>
                     <legend></legend>
 
-
-                    <div class="control-group">
-                        <label class="control-label" for="textarea2">Contact Person</label>
-                        <div class="controls">
-                            <textarea class="cleditor" name="contact_person" id="textarea2" rows="3">
-                                <?= $contact_info->contact_person; ?>
-                            </textarea>
-                        </div>
-                    </div>
-
                     <div class="control-group">
                         <label class="control-label" for="textarea2">Head Office</label>
                         <div class="controls">

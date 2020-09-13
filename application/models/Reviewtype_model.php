@@ -32,4 +32,18 @@ class Reviewtype_model extends Base_Model {
 	}
 
 
+	//================ for frontend ===============//
+
+	public function select_allCategory(){
+		
+		$this->db->select('tbl_type.*');
+		$this->db->select('tbl_review.photo');
+		$this->db->from('tbl_type');
+		$this->db->join('tbl_review','tbl_review.category_id = tbl_type.type_id');
+		$get = $this->db->get();
+		$result = $get->result();
+		return $result;
+	}
+
+
 }//Reviewtype_model

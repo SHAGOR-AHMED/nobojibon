@@ -2,17 +2,17 @@
 class Mailer_model extends Base_Model{
 
     private $from_address = "cloudnumber0707@gmail.com";
-    private $admin_address = "shagor.ahmed374@gmail.com";
+    private $admin_address = "info@mundanechem.com";
 
     
-    public function sendMailToAdmin($name,$subject,$email,$comments){
+    public function sendMailToAdmin($name,$phone,$subject,$email,$comments){
 
         $this->load->library('email');
         $this->email->set_mailtype('html');
         $this->email->from($email, $subject);
         $this->email->to($this->admin_address);
         $this->email->subject($subject);
-        $body = 'Name-'.$name.'<br>'.'Subject-'.$subject.'<br>'.'Comments-'.$comments;
+        $body = 'Name-'.$name.'<br>'.'Phone-'.$phone.'<br>'.'Subject-'.$subject.'<br>'.'Comments-'.$comments;
         //print_r($body);exit;
         $this->email->message($body);
         $this->email->send();
@@ -21,11 +21,11 @@ class Mailer_model extends Base_Model{
         if(!$this->email->send()){
             $msg = 'Your query has been send Successfully !!!';
             $message = $this->msg($msg);
-            redirect('Welcome/contactUs');
+            redirect('Mundane/contactUs');
         }else{
             $msg = 'Failed !!!';
             $message = $this->msg($msg);
-            redirect('Welcome/contactUs');
+            redirect('Mundane/contactUs');
           }
     }//sendMailToAdmin
 

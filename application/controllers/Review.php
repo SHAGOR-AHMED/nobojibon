@@ -17,40 +17,42 @@ class Review extends Base_Controller {
 		$data['message'] = array();
 		$data['message'] = $this->session->flashdata('message');
         $data['all_review']=$this->Review_model->get_review();
-        $data['admin_maincontent']=$this->load->view('admin/review_manage',$data,true);
+        $data['admin_maincontent']=$this->load->view('admin/manage_product',$data,true);
 	 	$this->load->view('admin/admin_master',$data);
 	}
 
 //=============================== Review =========================================//
 
-	public function add_review(){
+	public function add_product(){
 
 		$data = array();
-		//$data['all_published_category'] = $this->FrontModel->select_published_category();
-		$data['admin_maincontent'] = $this->load->view('admin/add_review', $data, true);
+		$data['admin_maincontent'] = $this->load->view('admin/add_product', $data, true);
 		$this->load->view('admin/admin_master',$data);
 	}
 
-	public function save_review(){
+	public function save_product(){
 
-		$this->form_validation->set_rules('description', 'Review Description', 'required');
+		$this->form_validation->set_rules('title', 'Product Title', 'required');
+		$this->form_validation->set_rules('description', 'Product Description', 'required');
 
 		if($this->form_validation->run() == FALSE){
 
-			$data['admin_maincontent'] = $this->load->view('admin/add_review', '', true);
+			$data['admin_maincontent'] = $this->load->view('admin/add_product', '', true);
 			$this->load->view('admin/admin_master',$data);
 			return false;
 
 		}else{
 
-			$data['review_type'] = $this->input->post('review_type');
+			$data['category_id'] = $this->input->post('category_id');
+			$data['title'] = $this->input->post('title');
 			$data['description'] = $this->input->post('description');
 			$data['photo'] = $this->uploadPhoto();
+			$data['pdf_file'] = $this->uploadPDF();
 			//$this->debug($data);
 
 			$result = $this->Review_model->commonInsert('tbl_review',$data);
 			if($result){
-				$msg = 'Program Details has been created successfully !!!';
+				$msg = 'Product has been created successfully !!!';
 				$message = $this->msg($msg);
 				redirect('Review/index');
 			}else{
@@ -61,28 +63,26 @@ class Review extends Base_Controller {
 			
 		}//if
 
-	}//save_review
+	}//save_product
 
-	public function edit_review($id){
+	public function edit_product($id){
 
 		$data = array();
-		$data['review_info'] = $this->Review_model->select_Program_by_id($id);
-		$data['admin_maincontent'] = $this->load->view('admin/edit_review', $data, true);
+		$data['selected_info'] = $this->Review_model->select_Program_by_id($id);
+		$data['admin_maincontent'] = $this->load->view('admin/edit_product', $data, true);
 		$this->load->view('admin/admin_master',$data);
 	}
 
-	public function update_review(){
+	public function update_product(){
 
 		$review_id = $this->input->post('review_id',true);
-		$review_type = $this->input->post('review_type',true);
-		$review_title = $this->input->post('review_title',true);
+		$category_id = $this->input->post('category_id',true);
+		$title = $this->input->post('title',true);
 		$description = $this->input->post('description',true);
-		$video_link = $this->input->post('video_link',true);
 
-		$this->db->set('review_type', $review_type);
-		$this->db->set('review_title', $review_title);
+		$this->db->set('category_id', $category_id);
+		$this->db->set('title', $title);
 		$this->db->set('description', $description);
-		$this->db->set('video_link', $video_link);
 
 		if(isset($review_id) && $review_id != ''){
 
@@ -91,15 +91,30 @@ class Review extends Base_Controller {
 			if(isset($_FILES['photo']['name']) && ($_FILES['photo']['name'] != '')){
 				unlink($prev_info->photo);
 			}
+			
+		}
+
+		if(isset($review_id) && $review_id != ''){
+
+			$data = array('review_id' => $review_id);
+			$prev_info = $this->db->get_where("tbl_review",$data)->row();
+			if(isset($_FILES['pdf_file']['name']) && ($_FILES['pdf_file']['name'] != '')){
+				unlink($prev_info->pdf_file);
+			}
 		}
 
 		if(isset($_FILES['photo']['name']) && ($_FILES['photo']['name'] != '') ){
 
 			$photo = $this->updatePhoto();
 		}
+
+		if(isset($_FILES['pdf_file']['name']) && ($_FILES['pdf_file']['name'] != '') ){
+
+			$pdf_file = $this->updatePDF();
+		}
 		
 
-		$result = $this->Review_model->Update_Review($review_id);
+		$result = $this->Review_model->Update_product($review_id);
 
 		if($result){
 			$msg = 'Updated Successfully!!!';
@@ -112,13 +127,13 @@ class Review extends Base_Controller {
 			redirect('Review/index');
 		}
 
-	}//update_review
+	}//update_product
 
-	public function delete_review($id){
+	public function delete_product($id){
 
-		$result = $this->Review_model->deleteReview_by_id($id);
+		$result = $this->Review_model->deleteProductByID($id);
 		if($result){
-			$msg = 'Review has been Delete !!!';
+			$msg = 'Product has been Deleted !!!';
 			$message = $this->msg($msg);
 			redirect('Review/index');
 		}else{

@@ -40,19 +40,19 @@ class Photo_model extends Base_Model {
 		return $this->db->select('*')->from('tbl_photos')->where('type',1)->order_by('photo_id', 'DESC')->get()->result();
 	}
 
-	public function getAbout(){
+	public function getPencipals(){
 
-		return $this->db->select('*')->from('tbl_photos')->where('type',2)->order_by('photo_id', 'DESC')->limit(1)->get()->result();
+		return $this->db->select('*')->from('tbl_photos')->where('type',2)->order_by('photo_id', 'DESC')->get()->result();
 	}
 
-	public function getGallery(){
+	public function getTeam(){
 
 		return $this->db->select('*')->from('tbl_photos')->where('type',3)->order_by('photo_id', 'DESC')->get()->result();
 	}
 
-	public function getAcheivement(){
+	public function getCertificate(){
 
-		return $this->db->select('*')->from('tbl_photos')->where('type',4)->order_by('photo_id', 'DESC')->limit(1)->get()->row();
+		return $this->db->select('*')->from('tbl_photos')->where('type',4)->order_by('photo_id', 'DESC')->get()->result();
 	}
 
 	public function getProgram(){

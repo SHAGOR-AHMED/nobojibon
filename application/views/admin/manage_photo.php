@@ -39,8 +39,6 @@
                     <tr>
                         <th>SN</th>
                         <th>Photo Type</th>
-                        <th>Photo Title</th>
-                       <!--  <th>Description</th> -->
                         <th>Photo</th>
                         <th>Actions</th>
                     </tr>
@@ -52,16 +50,8 @@
                     <tr>
                         <td><?php echo $i++;?></td>
                         <td class="center"><?php echo photoTypeName($val->type);?></td>
-                        <td class="center"><?php echo $val->photo_title;?></td>
-                       <!--  <td class="center"><?php echo $val->description;?></td> -->
                         <td class="center">
-                            <?php
-                                if($val->type == 7){ ?>
-                                    <img src="<?= base_url('assets/admin/img/337946.png');?>" height="150px" width="180px">
-                            <?php }else{ ?>
-                                    <img src="<?= base_url($val->photo);?>" height="150px" width="180px">
-                            <?php } ?>
-                            
+                            <img src="<?= base_url($val->photo);?>" height="150px" width="180px">
                         </td>
                         <td class="center">
                             <a class="btn btn-info" href="<?php echo base_url();?>Photo/edit_photo/<?php echo $val->photo_id?>" title="Edit">
